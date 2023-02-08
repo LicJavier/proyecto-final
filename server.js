@@ -25,7 +25,6 @@ import { cart, mail, name } from "./src/controllers/page.controller.js";
 import { cartDao , messageDao, orderDao, userDao } from "./src/utils/index.js";
 import issueJWT, { JwtStrategy } from "./src/utils/jwt.js";
 dotenv.config();
-const myHeaders = new Headers();
 //----------------------------------------------------------------------------------------------
 //-----------------------------SERVER INSTANCE--------------------------------------------------
 //----------------------------------------------------------------------------------------------
@@ -79,7 +78,6 @@ passport.use(new LocalStrategy(
             } else {
                 token = issueJWT(user);
                 logger.info(token)
-                myHeaders.append('Content-Type', 'text/xml',"Authorization" ,`${token}`);
                 return cb( null , user );    
             }
         }
