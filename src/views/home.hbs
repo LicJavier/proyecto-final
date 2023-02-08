@@ -1,0 +1,35 @@
+<div class="flex flex-col w-auto h-screen">
+    <nav class="flex bg-blue-500 p-5 font-mono text-xl justify-between">
+        <p class="p-4">Bienvenido</p>
+        <div><img class="h-12" id="cartIco" src="./images/cart.png" alt="cart image" srcset=""></div>
+        <div>
+            <span> {{user}}</span>
+            <button onclick="location.href ='/logout'">Cerrar sesión</button>
+        </div>
+    </nav>
+    <main class="flex flex-col  items-center bg-cyan-500  m-0">
+        <div >
+            <table class="table-auto m-10 text-2xl bg-green-400 ">
+                <thead>
+                    <tr class="p-5 m-5 ">
+                        <td class="p-5 font-mono text-3xl">Nombre</td>
+                        <td class="p-5 font-mono text-3xl">Precio</td>
+                        <td class="p-5 font-mono text-3xl">Imagen</td>
+                    </tr>
+                </thead>
+                {{#each product}}
+                <tbody>
+                    <tr>
+                        <td class="p-5 font-mono text-3xl">{{this.name}}</td>
+                        <td class="p-5 font-mono text-3xl">$ {{this.price}}</td>
+                        <td class="p-5 font-mono text-3xl"><img class="max-h-60" src={{this.img}} alt="logo producto"></td>
+                        <td class="p-5 font-mono text-3xl"> <button  class="text-white bg-black" onclick="location.href=`/productos/{{this.id}}`">ver producto</button></td>
+                    </tr>
+                </tbody>
+                {{/each}}
+            </table>
+        </div>
+    </main>
+    {{> footer}}
+</div>    
+<script src="./scripts/index.js"></script>

@@ -1,0 +1,41 @@
+<div class="flex flex-col w-auto h-screen">
+    <nav class="flex bg-blue-500 p-5 font-mono text-xl justify-between">
+        <p class="p-4">Bienvenido</p>
+        <div><img class="h-12" id="cartIco" src="../images/cart.png" alt="logo cart"></div>
+        <div>
+            <span> {{user}}</span>
+            <button onclick="location.href = '/logout'">Cerrar sesión</button>
+        </div>
+    </nav>
+    <main class="flex flex-col  items-center bg-cyan-500  m-0 h-full">
+        <div >
+            <table class="table-auto m-10 text-2xl bg-green-400 border-4">
+                <thead>
+                    <tr class="p-5 m-5 border-4 text-center">
+                        <td class="p-5 font-mono text-3xl ">Nombre</td>
+                        <td class="p-5 font-mono text-3xl">Precio</td>
+                        <td class="p-5 font-mono text-3xl">Stock</td>
+                        <td class="p-5 font-mono text-3xl">Descripción</td>
+                        <td class="p-5 font-mono text-3xl">Imagen</td>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr class="border-4">
+                            <td class="p-5 font-mono text-2xl border-4 text-center">{{productId.name}}</td>
+                            <td class="p-5 font-mono text-2xl border-4 text-center">$ {{productId.price}}</td>
+                            <td class="p-5 font-mono text-2xl border-4 text-center">{{productId.stock}}</td>
+                            <td class="p-5 font-mono text-2xl border-4 text-center">{{productId.description}}</td>
+                            <td class="p-5 font-mono text-2xl border-4 text-center"><img class="max-h-60" src={{productId.img}} alt="logo producto"></td>
+                            <td class="p-5 font-mono text-2xl"> <button  class="text-white bg-black add-cart"><a href="add/{{productId.id}}">Añadir al carrito</a></button></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </main>
+    {{> footer}}
+</div>
+<script src="/socket.io/socket.io.js"></script>
+<script>
+    const socket = io();
+</script>
+<script src="../scripts/index.js"></script>    

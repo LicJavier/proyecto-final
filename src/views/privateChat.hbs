@@ -1,0 +1,33 @@
+<main>
+    <h1 class="font-mono font-extrabold text-5xl text-center bg-blue-300 p-5 " >Centro de Mensajes</h1>
+    <form action="" class="flex flex-col  items-center bg-cyan-500 p-4">
+        <label for="user" class="font-mon">Email</label>
+        <input type="email" id="user">
+        <label class="font-mono" for="bodyMessage">Deja tu mensaje</label>
+        <input type="text" id="bodyMessage">
+        <button id="send" class="border-solid border-2 border-sky-500 bg-gradient-to-r from-blue-700 to-purple-600 font-mono m-6 p-2 shadow-md">Enviar Mensaje</button>
+    </form>
+    <table class="p-5 bg-sky-700 h-screen w-screen">
+        <thead>
+            <tr class="p-5 m-5 ">
+                <td class="p-5 font-mono text-center text-3xl">Nombre</td>
+                <td class="p-5 font-mono text-center text-3xl">Hora</td>
+                <td class="p-5 font-mono text-center text-3xl">Mensaje</td>
+            </tr>
+        </thead>
+        <tbody id="chatRecord">
+            {{#each messages}}
+            <tr>
+                <td class="p-5 font-mono text-white text-3xl">{{user}}</td>
+                <td class="p-5 font-mono text-white text-3xl">{{date}}</td>
+                <td class="p-5 font-mono text-white text-3xl">{{bodyMessage}}</td>
+            </tr>
+            {{/each}}
+        </tbody>
+    </table>
+</main>
+<script src="../socket.io/socket.io.js"></script>
+<script>
+    const socket = io();
+</script>
+<script src="../scripts/socket.js"></script>
